@@ -16,16 +16,10 @@ server.get('/tickets', async () => {
   return { tickets };
 })
 
-server.post('/tickets-faturados', async (request) => {
-  const createTicketSchema = z.object({
-    invoiced: z.boolean()
-  });
-
-  const { invoiced } = createTicketSchema.parse(request.body);
-
+server.get('/tickets-faturados', async () => {
   const tickets = await prisma.ticket.findMany({
     where: {
-      invoiced: invoiced,
+      invoiced: true,
       isIntegrad: false
     }
   })

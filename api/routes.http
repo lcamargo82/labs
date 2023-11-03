@@ -14,12 +14,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3333/tickets-faturados
-Content-Type: application/json
-
-{
-  "invoiced": true
-}
+GET http://localhost:3333/tickets-faturados
 
 ###
 POST http://localhost:3333/tickets-integrado
