@@ -1,3 +1,6 @@
+GET http://localhost:3333
+
+###
 GET http://localhost:3333/tickets
 
 ###
@@ -7,7 +10,7 @@ Content-Type: application/json
 {
   "product": 1, 
   "codTransporter": 1, 
-  "ticket": 125, 
+  "ticket": 131, 
   "value": 123.50, 
   "weight": 60.10,
   "invoiced": true

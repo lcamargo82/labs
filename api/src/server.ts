@@ -27,25 +27,6 @@ server.get('/tickets-faturados', async () => {
   return { tickets };
 })
 
-server.put('/tickets-integrado/:id', async (request, reply) => {
-  const createTicketSchema = z.object({
-    id: z.string()
-  });
-
-  const { id } = createTicketSchema.parse(request.params);
-
-  await prisma.ticket.update({
-    where: { 
-      id
-    },
-    data: { 
-      isIntegrad: true
-    }
-  })
-
-  return reply.status(204).send();
-})
-
 server.post('/tickets', async (request, reply) => {
   const createTicketSchema = z.object({
     product: z.number(),
@@ -71,6 +52,25 @@ server.post('/tickets', async (request, reply) => {
 
   return reply.status(201).send();
 
+})
+
+server.put('/tickets-integrado', async (request, reply) => {
+  const createTicketSchema = z.object({
+    id: z.string()
+  });
+
+  const { id } = createTicketSchema.parse(request.body);
+
+  await prisma.ticket.update({
+    where: { 
+      id
+    },
+    data: { 
+      isIntegrad: true
+    }
+  })
+
+  return reply.status(204).send();
 })
 
 server.listen({
