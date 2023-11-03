@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Ticket {
+  id             String   @id @default(cuid())
+  ticket         Int
+  codTransporter Int
+  product        Int
+  weight         Float
+  value          Float
+  invoiced       Boolean  @default(false)
+  CreatedAt      DateTime @default(now())
+}

@@ -1,0 +1,22 @@
+GET http://localhost:3333/tickets
+
+###
+POST http://localhost:3333/tickets
+Content-Type: application/json
+
+{
+  "product": 1, 
+  "codTransporter": 1, 
+  "ticket": 125, 
+  "value": 123.50, 
+  "weight": 60.10,
+  "invoiced": true
+}
+
+###
+POST http://localhost:3333/tickets-faturados
+Content-Type: application/json
+
+{
+  "invoiced": true
+}
