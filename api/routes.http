@@ -17,9 +17,9 @@ Content-Type: application/json
 GET http://localhost:3333/tickets-faturados
 
 ###
-POST http://localhost:3333/tickets-integrado
+PUT http://localhost:3333/tickets-integrado
 Content-Type: application/json
 
 {
-  "id": "cloi1qght0001tattzmu6to2r"
+  "id": "cloi0jjb20000tattqvfadyv8"
 }

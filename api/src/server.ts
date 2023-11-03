@@ -27,12 +27,12 @@ server.get('/tickets-faturados', async () => {
   return { tickets };
 })
 
-server.post('/tickets-integrado', async (request, replay) => {
+server.put('/tickets-integrado/:id', async (request, reply) => {
   const createTicketSchema = z.object({
     id: z.string()
   });
 
-  const { id } = createTicketSchema.parse(request.body);
+  const { id } = createTicketSchema.parse(request.params);
 
   await prisma.ticket.update({
     where: { 
@@ -43,11 +43,10 @@ server.post('/tickets-integrado', async (request, replay) => {
     }
   })
 
-  return replay.status(204).send();
+  return reply.status(204).send();
 })
 
-server.post('/tickets', async (request, replay) => {
-  console.log(request.body)
+server.post('/tickets', async (request, reply) => {
   const createTicketSchema = z.object({
     product: z.number(),
     codTransporter: z.number(),
@@ -70,7 +69,7 @@ server.post('/tickets', async (request, replay) => {
     }
   })
 
-  return replay.status(201).send();
+  return reply.status(201).send();
 
 })
 
