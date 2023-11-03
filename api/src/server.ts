@@ -6,6 +6,10 @@ const server = fastify();
 
 const prisma = new PrismaClient()
 
+server.get('/', async () => {
+  return 'Hello World!';
+})
+
 server.get('/tickets', async () => {
   const tickets = await prisma.ticket.findMany()
 
@@ -21,11 +25,31 @@ server.post('/tickets-faturados', async (request) => {
 
   const tickets = await prisma.ticket.findMany({
     where: {
-      invoiced: invoiced
+      invoiced: invoiced,
+      isIntegrad: true
     }
   })
 
   return { tickets };
+})
+
+server.post('/tickets-integrado', async (request, replay) => {
+  const createTicketSchema = z.object({
+    id: z.string()
+  });
+
+  const { id } = createTicketSchema.parse(request.body);
+
+  await prisma.ticket.update({
+    where: { 
+      id
+    },
+    data: { 
+      isIntegrad: true
+    }
+  })
+
+  return replay.status(204).send();
 })
 
 server.post('/tickets', async (request, replay) => {

@@ -20,3 +20,11 @@ Content-Type: application/json
 {
   "invoiced": true
 }
+
+###
+POST http://localhost:3333/tickets-integrado
+Content-Type: application/json
+
+{
+  "id": "cloi1qght0001tattzmu6to2r"
+}

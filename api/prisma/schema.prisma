@@ -18,5 +18,6 @@ model Ticket {
   weight         Float
   value          Float
   invoiced       Boolean  @default(false)
+  isIntegrad     Boolean  @default(false)
   CreatedAt      DateTime @default(now())
 }
