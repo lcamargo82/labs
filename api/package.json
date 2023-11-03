@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "19"
+  },
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx server.ts"
+    "dev": "tsx server.ts",
+    "build": "tsup serve",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
