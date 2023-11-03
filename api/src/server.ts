@@ -26,7 +26,7 @@ server.post('/tickets-faturados', async (request) => {
   const tickets = await prisma.ticket.findMany({
     where: {
       invoiced: invoiced,
-      isIntegrad: true
+      isIntegrad: false
     }
   })
 
